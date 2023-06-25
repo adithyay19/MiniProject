@@ -7,19 +7,17 @@ import '@mui/lab/themeAugmentation';
 import intents from './data/intents.json';
 
  let i: { forEach: (arg0: { tag: string; patterns: string[]; responses: string[]; }[], arg1: {}) => void; };
+ var response:(string);
 
 async function fetchAnswer(question: string): Promise<string> {
-  
+  response = 'Invalid Question';
   await new Promise(resolve => setTimeout(resolve,2000));
   intents.intents.forEach(i => {
     if(i.patterns.includes(question)) {
-      return i.responses;
+      response = i.responses[0];
     }
   });
-  if(question.match('Hello'))
-    return "Hey there";
-  else
-    return intents.intents[1].tag;
+  return response;
 }
 
 // interface DisplayAnswerProps {
@@ -68,11 +66,11 @@ const QuestionForm: React.FC = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <TextField 
-          fullWidth
+          multiline
           label='Question' 
           type='search'
           variant='outlined'
-          id="fullWidth"
+          // id="fullWidth"
           value={question}
           margin='normal' 
           onChange={(event) => setQuestion(event.target.value)}
@@ -83,7 +81,7 @@ const QuestionForm: React.FC = () => {
         <TextField 
           multiline
           variant='outlined'
-          id='multiline-flexible-read-only-input-fullWidth'
+          id='multiline-flexible-read-only-input'
           label='Answer'
           rows={3}
           value={answer}
