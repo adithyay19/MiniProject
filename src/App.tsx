@@ -64,16 +64,18 @@ const QuestionForm: React.FC = () => {
           label='Question' 
           type='search'
           variant='outlined'
-          id="
-          fullWidth"
+          id="fullWidth"
+          value={question}
           margin='normal' 
-          onChange={(event: React.FormEvent<HTMLFormElement>) => setQuestion(event.target.value)}
+          onChange={(event) => setQuestion(event.target.value)}
+          
         />
         {/* <input type='text' value={question} onChange={(event) => setQuestion(event.target.value)} /> */}
         <br></br>
         <TextField 
           multiline
-          id='outlined-multiline-flexible-read-only-input-fullWidth'
+          variant='outlined'
+          id='multiline-flexible-read-only-input-fullWidth'
           label='Answer'
           rows={3}
           value={answer}
