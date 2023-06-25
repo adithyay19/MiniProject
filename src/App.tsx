@@ -4,14 +4,22 @@ import TextField from '@mui/material/TextField';
 // import Button from '@mui/material/Button';
 import LoadingButton from '@mui/lab/LoadingButton';
 import '@mui/lab/themeAugmentation';
+import intents from './data/intents.json';
+
+ let i: { forEach: (arg0: { tag: string; patterns: string[]; responses: string[]; }[], arg1: {}) => void; };
 
 async function fetchAnswer(question: string): Promise<string> {
   
   await new Promise(resolve => setTimeout(resolve,2000));
+  intents.intents.forEach(i => {
+    if(i.patterns.includes(question)) {
+      return i.responses;
+    }
+  });
   if(question.match('Hello'))
     return "Hey there";
   else
-    return 'Answer from the database';
+    return intents.intents[1].tag;
 }
 
 // interface DisplayAnswerProps {
