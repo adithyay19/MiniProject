@@ -60,14 +60,14 @@ const QuestionForm: React.FC = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <TextField 
-          fullwidth
+          fullWidth
           label='Question' 
           type='search'
           variant='outlined'
           id="
           fullWidth"
           margin='normal' 
-          onChange={(event: React.FormEvent<HTMLFormElement>) => setQuestion(event.currentTarget.value)}
+          onChange={(event: React.FormEvent<HTMLFormElement>) => setQuestion(event.target.value)}
         />
         {/* <input type='text' value={question} onChange={(event) => setQuestion(event.target.value)} /> */}
         <br></br>
